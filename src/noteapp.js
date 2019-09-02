@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 
 const NoteApp = () => {
   const notesData = JSON.parse(localStorage.getItem('notes'))
-  const [notes, setNotes] = useState([notesData || []])
+  const [notes, setNotes] = useState(notesData || [])
   const [title, setTitle] = useState('')
   const [body, setBody] = useState('')
 
@@ -29,7 +29,7 @@ const NoteApp = () => {
         <div>
             <h1>Notes</h1>
             {notes.map((note)=> (
-                <div>
+                <div key={note.title}>
                     <h2> {note.title}</h2>
                     <p>{note.body}</p>
                     <button onClick= {()=>removeNote(note.title)}>x</button>
